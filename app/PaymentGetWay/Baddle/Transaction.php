@@ -11,19 +11,16 @@ class Transaction {
         $this->amount = $amount;
     }
 
-    // public function getAmount(): float {
-    //     return $this->amount;
-    // }
-
-    // public function setAmount(float $amount): void {
-    //     $this->amount = $amount;
-    // }
-   
-
     public function process(){
         echo 'Processing $' . $this->amount . ' transaction';
         $this->generateReceipt();
         $this->sendEmail();
+    }
+
+
+
+    public function copyFrom(Transaction $transaction){
+        var_dump($transaction->amount, $this->sendEmail());
     }
 
     private function generateReceipt(){
@@ -31,6 +28,7 @@ class Transaction {
     }
 
     private function sendEmail(){
+        return true;
 
     }
 
