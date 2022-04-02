@@ -6,15 +6,8 @@ declare(strict_types = 1);
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$fields = [
-    new \App\Text('TextField'),
-    new \App\Checkbox('CheckboxField'),
-    new \App\Radio('Radioield'),
-];
+$service = new \App\DebtCollectionService();
 
-foreach ($fields as $field){
-    echo $field->render() . '<br />';
-}
-
+echo $service->collectDebt(new \App\CollectionAgency()) . PHP_EOL;
 
 
