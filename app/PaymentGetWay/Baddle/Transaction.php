@@ -5,14 +5,20 @@ namespace App\PaymentGetWay\Baddle;
 
 
 class Transaction {
-
-  
-
+   
+    private static int $count = 0;
     public function __construct(
         public float $amount,
-        public string $status
+        public string $Description
     ){
+        self::$count++;
        
+    }
+    
+
+    public static function getCount(): int
+    {
+        return self::$count;
     }
 
     public function prrcess(){
