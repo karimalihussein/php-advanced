@@ -6,7 +6,7 @@ namespace App\PaymentGetWay\Baddle;
 
 class Transaction {
    
-    private float $amount;
+    public float $amount;
     public function __construct(float $amount){
         $this->amount = $amount;
     }
