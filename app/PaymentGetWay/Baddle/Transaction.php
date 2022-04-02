@@ -6,23 +6,22 @@ namespace App\PaymentGetWay\Baddle;
 
 class Transaction {
    
-    private static int $count = 0;
-    public function __construct(
-        public float $amount,
-        public string $Description
-    ){
-        self::$count++;
-       
-    }
-    
-
-    public static function getCount(): int
-    {
-        return self::$count;
+    private float $amount;
+    public function __construct(float $amount){
+        $this->amount = $amount;
     }
 
-    public function prrcess(){
-        echo "Processing transaction....";
+    // public function getAmount(): float {
+    //     return $this->amount;
+    // }
+
+    // public function setAmount(float $amount): void {
+    //     $this->amount = $amount;
+    // }
+   
+
+    public function process(){
+        echo 'Processing $' . $this->amount . ' transaction';
     }
 
 
