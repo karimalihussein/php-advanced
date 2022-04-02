@@ -7,5 +7,6 @@ use App\PaymentGetWay\Baddle\Transaction;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 $transaction = new Transaction(25);
+$transaction->amount;
 // $transaction->setAmount(125);
 $transaction->process();

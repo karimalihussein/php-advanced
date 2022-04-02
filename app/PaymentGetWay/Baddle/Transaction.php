@@ -22,6 +22,16 @@ class Transaction {
 
     public function process(){
         echo 'Processing $' . $this->amount . ' transaction';
+        $this->generateReceipt();
+        $this->sendEmail();
+    }
+
+    private function generateReceipt(){
+
+    }
+
+    private function sendEmail(){
+
     }
 
 
