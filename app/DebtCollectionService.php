@@ -4,7 +4,7 @@ namespace App;
 
 class DebtCollectionService 
 {
-    public function collectDebt(CollectionAgency $collector){
+    public function collectDebt(DebtCollector $collector){
         $owedAmount = mt_rand(100, 1000);
         $collectedAmount = $collector->collect($owedAmount);
         echo "Collected $collectedAmount from $owedAmount" . PHP_EOL;
