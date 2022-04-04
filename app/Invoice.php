@@ -5,32 +5,18 @@ namespace App;
 
 class Invoice {
 
-    protected array $data = [];
-  
-    public function __get(string $name)
-    {
-        if(array_key_exists($name, $this->data)){
-            return $this->data[$name];
-        }
-        return null;
+    protected function process(float $amount, $description){
+        var_dump($amount, $description);
     }
 
-    public function __set(string $name, $value): void
-    {
-        $this->data[$name] = $value;
-    }
+     public function __call(string $name,array $arguments){
+         if(method_exists($this, $name)){
+            call_user_func_array([$this,$name],$arguments);
+         }
+     }
 
-    public function __isset(string $name): bool
-    {
-        var_dump('isset');
-        return array_key_exists($name, $this->data);
-        
-    }
-    public function __unset(string $name): void
-    {
-        var_dump('unset');
-        unset($this->data[$name]);
-    }
-
+     public static function __callStatic(string $name, $arguments){
+         var_dump($name, $arguments);
+     }
 
 }
