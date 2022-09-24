@@ -2,9 +2,8 @@
 
 declare(strict_types = 1);
 
-use App\Models\ClassA;
-use App\Models\ClassB;
-use App\Models\Invoice;
+use App\Controllers\HomeController;
+use App\Router;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -19,8 +18,11 @@ require APP_PATH . 'Helper.php';
 
 
 
+$router = new Router();
+$router->get('/',[HomeController::class, 'index']);
+echo $router->resolve($_SERVER['REQUEST_URI'], strtolower($_SERVER['REQUEST_METHOD']));
 
-
+session_start();
 
 
 
