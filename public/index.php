@@ -2,16 +2,35 @@
 
 declare(strict_types = 1);
 
-use App\Enums\Status;
-use App\PaymentGetWay\Baddle\Transaction;
+use App\Models\ClassA;
+use App\Models\ClassB;
+use App\Models\Invoice;
 
 require_once __DIR__ . '/../vendor/autoload.php';
-$transaction = new Transaction(25);
 
-// $reflectionProperty = New ReflectionProperty(Transaction::class, 'amount');  
-// $reflectionProperty->setAccessible(true);
-// $reflectionProperty->setValue($transaction, 125); 
-// var_dump($reflectionProperty->getValue($transaction));
-// $transaction->amount;
-// $transaction->setAmount(125);
-$transaction->process();
+$root = dirname(__DIR__) . DIRECTORY_SEPARATOR;
+
+define('APP_PATH', $root . 'app' . DIRECTORY_SEPARATOR);
+define('FILES_PATH', $root . 'data' . DIRECTORY_SEPARATOR);
+define('VIEWS_PATH', $root . 'views' . DIRECTORY_SEPARATOR);
+
+require APP_PATH . 'App.php';
+require APP_PATH . 'Helper.php';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
