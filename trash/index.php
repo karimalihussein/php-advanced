@@ -387,3 +387,20 @@ var_dump(Animal::getType());
 
 # PHP - Encapsulation & Abstraction exmaples 
 
+$db = new \PDO('mysql:host=db;dbname=main', 'root', 'root', [
+    \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+    \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
+]);
+// $query = 'SELECT * FROM `users`';
+// $statement = $db->query($query);
+// $users = $statement->fetchAll();
+// var_dump($users);
+$data = [
+    'full_name' => 'John Doe',
+    'email' => 'john@gmail.com',
+    'is_active' => 1,
+    'created_at' => date('Y-m-d H:i:s'),
+];
+$query = 'INSERT INTO `users` (`full_name`, `email`, `is_active`, `created_at`) VALUES (:full_name, :email, :is_active, :created_at)';
+$statement = $db->prepare($query);
+$statement->execute($data);

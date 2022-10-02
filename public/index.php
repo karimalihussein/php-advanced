@@ -22,18 +22,13 @@ require APP_PATH . 'Helper.php';
 
 
 
-try{
+
     $router = new Router();
     $router->get('/',[HomeController::class, 'index']);
     $router->get('/about',[HomeController::class, 'about']);
     $router->get('/form',[HomeController::class, 'form']);
     $router->post('/upload',[HomeController::class, 'upload']);
     echo $router->resolve($_SERVER['REQUEST_URI'], strtolower($_SERVER['REQUEST_METHOD']));
-} catch (Exception $e){
-    // header('HTTP/1.0 404 Not Found');
-    http_response_code(404);
-    echo View::make('error/404', ['message' => $e->getMessage()]);
-}
 
 
 
