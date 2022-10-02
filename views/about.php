@@ -7,10 +7,9 @@
     <title>Document</title>
 </head>
 <body>
-    <h1><?= $foo ?></h1>
 
-    <h1>Home</h1>
-    <p>Home page</p>
+    <h1>About</h1>
+    <p>About page</p>
     
 </body>
 </html>
