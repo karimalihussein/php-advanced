@@ -1,32 +1,31 @@
-<?php 
+<?php
+
+declare(strict_types=1);
 
 namespace App\Models;
 
-
-class Invoice 
+class Invoice extends Model
 {
-    public function __construct(public float $amount, public string $description)
+    public function create(float $amount,int $userId) : int
     {
-        $this->id = uniqid('invoice_');   
+        $newInvoiceStatement = $this->db->prepare('INSERT INTO invoices (amount, user_id) VALUES (:amount, :user_id)');
+        $newInvoiceStatement->execute([
+            'amount' => $amount,
+            'user_id' => $userId
+        ]);
+        return (int) $this->db->lastInsertId();
     }
 
-    public function __clone()
+    public function find(int $id) : array
     {
-        $this->id = uniqid('invoice_');
+        $stmt = $this->db->prepare('
+        SELECT invoices.id, amount, full_name
+        FROM invoices
+        LEFT JOIN users ON invoices.user_id = users.id
+        WHERE invoices.id = :id
+        ');
+        $stmt->execute(['id' => $id]);
+        $invoice = $stmt->fetch();
+        return $invoice ?: [];
     }
-
-    public function process()
-    {
-        if($this->amount <= 0) {
-            throw new \Exception('Amount must be greater than 0');
-        }
-        echo "Processing invoice {$this->id} for {$this->amount} with description {$this->description}";
-        sleep(1);
-        echo "Done processing invoice {$this->id} for {$this->amount} with description {$this->description}";
-
-    }
-
-
-      
-    
 }

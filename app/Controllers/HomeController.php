@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace App\Controllers;
 
+use App\Models\SignUp;
 use App\View;
 
 class HomeController
@@ -40,5 +41,24 @@ class HomeController
         header('Content-Disposition: attachment; filename=' . basename($filePath));
         header('Content-Length: ' . filesize($filePath));
         readfile($filePath);
+    }
+
+    public function invoice() : View
+    {
+        $email = 'fakeemail@gmail.com';
+        $amount = 100;
+        $name = 'John Doe';
+        $userModel = new \App\Models\User();
+        $invoiceModel = new \App\Models\Invoice();
+        $signUpModel = (new SignUp($userModel, $invoiceModel))->register([
+            'email' => $email,
+            'full_name' => $name
+        ], [            
+            'amount' => $amount
+        ]);
+        return View::make('invoice', [
+            'invoice' => $invoiceModel->find($signUpModel)
+        ]);
+        
     }
 }
