@@ -5,14 +5,25 @@ declare(strict_types = 1);
 namespace App;
 
 use App\Exceptions\RouteNotFoundException;
+use App\Services\InvoiceService;
 
 class App
 {
     private static DB $db;
+    private static Container $container;
 
     public function __construct(protected Router $router, protected array $request, protected Config $config)
     {
         static::$db = new DB($config->db ?? []);
+        static::$container = new Container();
+        static::$container->set(InvoiceService::class, function(Container $c){
+            return new InvoiceService(
+                $c->get('salesTaxService'),
+                $c->get('paymentGatewayService'),
+                $c->get('emailService')
+            );
+            
+        });
     }
 
     public static function db(): DB
