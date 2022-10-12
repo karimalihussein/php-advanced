@@ -3,7 +3,8 @@
         "ext-pdo": "*",
         "vlucas/phpdotenv": "^5.4",
         "ramsey/uuid": "^4.3",
-        "psr/container": "^2.0"
+        "psr/container": "^2.0",
+        "symfony/mailer": "^6.1"
     },
     "autoload": {
         "psr-4": {

@@ -404,3 +404,31 @@ $data = [
 $query = 'INSERT INTO `users` (`full_name`, `email`, `is_active`, `created_at`) VALUES (:full_name, :email, :is_active, :created_at)';
 $statement = $db->prepare($query);
 $statement->execute($data);
+
+
+        //     // foreach ($methods as $method) {
+        //     //     $attributes = $method->getAttributes(Route::class);
+        //     //     foreach ($attributes as $attribute) {
+        //     //         $route = $attribute->newInstance();
+        //     //         $this->register($route->method, $route->routePath, [$controller => $method->getName()]);
+        //     //         // $this->routes[$route->path][$route->methods[0]] = [
+        //     //         //     'controller' => $controller,
+        //     //         //     'method' => $method->getName(),
+        //     //         //     'middlewares' => $route->middlewares,
+        //     //         //     'params' => $route->params
+        //     //         // ];
+        //     //     }
+              
+        //     }
+        // }
+
+
+                // $email = (new Email())
+        //     ->from('support@example.com')
+        //     ->to($email)
+        //     ->subject('Welcome to our website')
+        //     ->text($text);
+        // $dsn = $_ENV['MAIL_DRIVER'] . '://' . $_ENV['MAIL_HOST'] . ':' . $_ENV['MAIL_PORT'];
+        // $transport = Transport::fromDsn($dsn);
+        // $mailer = new Mailer($transport);
+        // $mailer->send($email);

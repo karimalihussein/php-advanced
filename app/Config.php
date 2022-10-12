@@ -6,6 +6,7 @@ namespace App;
 
 /**
  * @property-read ?array $db
+ * @property-read ?array $mailer
  */
 class Config
 {
@@ -21,6 +22,10 @@ class Config
                 'database' => $env['DB_DATABASE'],
                 'driver'   => $env['DB_DRIVER'] ?? 'mysql',
             ],
+            'mailer' => [
+                'dns'      => $_ENV['MAIL_DRIVER'] . '://' . $_ENV['MAIL_HOST'] . ':' . $_ENV['MAIL_PORT']
+            ]
+           
         ];
     }
 

@@ -4,11 +4,24 @@ declare(strict_types = 1);
 
 namespace App\Controllers;
 
+use App\Attributes\Get;
+use App\Attributes\Post;
+use App\Attributes\Put;
+use App\Attributes\Route;
+use App\Enums\HttpMethod;
+use App\Models\Invoice;
 use App\Models\SignUp;
+use App\Services\InvoiceService;
 use App\View;
 
 class HomeController
 {
+    public function __construct(private InvoiceService $invoiceService)
+    {
+    }
+
+    #[Get('/')]
+    #[Get(routePath: '/home')]
     public function index(): string
     {
         return View::make('index', ['foo' => 'bar'])->render();
@@ -60,5 +73,16 @@ class HomeController
             'invoice' => $invoiceModel->find($signUpModel)
         ]);
         
+    }
+    #[Post('/')]
+    public function store()
+    {
+
+    }
+
+    #[Put('/')]
+    public function update(int $id)
+    {
+
     }
 }

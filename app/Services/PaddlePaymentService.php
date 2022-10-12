@@ -6,15 +6,11 @@ namespace App\Services;
 
 use App\Interfaces\PaymentGatewayServiceInterface;
 
-class PaymentGatewayService implements PaymentGatewayServiceInterface
+class PaddlePaymentService implements PaymentGatewayServiceInterface
 {
     public function charge(array $customer, float $amount, float $tax): bool
     {
-        echo 'Charging credit card...<br />';
-
+        echo 'Charging From Paddle Payment Service <br>';
         return true;
     }
-}
-{
-    
 }

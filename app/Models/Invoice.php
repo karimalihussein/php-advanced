@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Enums\InvoiceStatus;
+
 class Invoice extends Model
 {
     public function create(float $amount,int $userId) : int
@@ -19,7 +21,7 @@ class Invoice extends Model
     public function find(int $id) : array
     {
         $stmt = $this->db->prepare('
-        SELECT invoices.id, amount, full_name
+        SELECT invoices.id, amount
         FROM invoices
         LEFT JOIN users ON invoices.user_id = users.id
         WHERE invoices.id = :id
@@ -27,5 +29,17 @@ class Invoice extends Model
         $stmt->execute(['id' => $id]);
         $invoice = $stmt->fetch();
         return $invoice ?: [];
+    }
+
+    public function all(InvoiceStatus $status) : array 
+    {
+        $stmt = $this->db->prepare('
+            SELECT invoices.id, amount
+            FROM invoices
+            WHERE status = :status
+        ');
+        $stmt->execute(['status' => $status->value]);
+        $invoices = $stmt->fetchAll();
+        return $invoices ?: [];
     }
 }

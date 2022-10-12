@@ -40,3 +40,12 @@ services:
       PMA_PASSWORD: root
     ports:
       - 8080:80
+  mailhog:
+    image: mailhog/mailhog
+    container_name: programwithgio-mailhog
+    restart: always
+    logging:
+      driver: none
+    ports:
+      - 8025:8025
+      - 1025:1025
