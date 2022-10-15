@@ -6,7 +6,7 @@ use App\App;
 use App\Container;
 use App\Services\EmailService;
 
-require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 
 $container = new Container();
 

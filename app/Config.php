@@ -19,11 +19,11 @@ class Config
                 'host'     => $env['DB_HOST'],
                 'user'     => $env['DB_USER'],
                 'pass'     => $env['DB_PASS'],
-                'database' => $env['DB_DATABASE'],
-                'driver'   => $env['DB_DRIVER'] ?? 'mysql',
+                'dbname'   => $env['DB_DATABASE'],
+                'driver'   => $env['DB_CONNECTION'] ?? 'pdo_mysql',
             ],
             'mailer' => [
-                'dns'      => $_ENV['MAIL_DRIVER'] . '://' . $_ENV['MAIL_HOST'] . ':' . $_ENV['MAIL_PORT']
+                    'dns'      => $_ENV['MAIL_DRIVER'] . '://' . $_ENV['MAIL_HOST'] . ':' . $_ENV['MAIL_PORT']
             ]
            
         ];

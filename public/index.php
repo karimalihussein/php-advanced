@@ -8,11 +8,17 @@ use App\Container;
 use App\Controllers\GaneratorController;
 use App\Controllers\HomeController;
 use App\Controllers\UserController;
+use App\Entity\Invoice;
+use App\Entity\InvoiceItems;
+use App\Enums\InvoiceStatus;
 use App\Enums\PaymentStatus;
 use App\Models\Address;
 use App\Models\Payment;
 use App\Router;
 use App\View;
+use Doctrine\DBAL\DriverManager;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Tools\Setup;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -42,19 +48,44 @@ $router->registerRoutesFromControllerAttributes(
 );
 
 (new App($container, $router,['uri' => $_SERVER['REQUEST_URI'],'method' => $_SERVER['REQUEST_METHOD']]))->boot()->run();
-// $router->get('/',[HomeController::class, 'index']);
-// $router->get('/about',[HomeController::class, 'about']);
-// $router->get('/form',[HomeController::class, 'form']);
-// $router->post('/upload',[HomeController::class, 'upload']);
-// $router->get('/invoice',[HomeController::class, 'invoice']);
-// $router->get('/generator',[GaneratorController::class, 'index']);
-// $router->get('/test', function () {
-//     $payment = new Payment();
-//     $payment->updateStatus(PaymentStatus::Failed);
-//     // echo $payment->getStatus()->value;
-//     $address = new Address('123 Main St', 'Anytown', 'CA', '12345', 'US');
-//     echo $address->street;
-// });
+
+$connectionParams = [
+    'dbname'     => $_ENV['DB_DATABASE'],
+    'user'       => $_ENV['DB_USER'],
+    'password'   => $_ENV['DB_PASS'],
+    'host'       => $_ENV['DB_HOST'],
+    'driver'     => $_ENV['DB_CONNECTION'] ?? 'pdo_mysql',
+];
+$entitymanager = 
+EntityManager::create($connectionParams,
+ Setup::createAttributeMetadataConfiguration([APP_PATH . 'Entity'], true));
+$items = [
+    ['Item 1', 1 , 15],
+    ['Item 2', 2, 6.66],
+    ['Item 3', 3, 20.40],
+    ['Item 4', 4, 10]
+];
+
+$invoice = (new Invoice())
+->setInvoiceNumber('INV-123')
+->setAmount(100)
+->setStatus(InvoiceStatus::Pending)
+->setCreatedAt(new DateTime());
+
+foreach ($items as [$description, $quantity, $price]) {
+    $item = (new InvoiceItems())
+        ->setDescription($description)
+        ->setQuantity($quantity)
+        ->setUnitPrice($price);
+    $invoice->addItem($item);
+    $entitymanager->persist($item);
+}
+
+
+$entitymanager->persist($invoice);
+
+
+
 
 
 

@@ -432,3 +432,42 @@ $statement->execute($data);
         // $transport = Transport::fromDsn($dsn);
         // $mailer = new Mailer($transport);
         // $mailer->send($email);
+
+
+
+        $connectionParams = [
+            'dbname'     => $_ENV['DB_DATABASE'],
+            'user'       => $_ENV['DB_USER'],
+            'password'   => $_ENV['DB_PASS'],
+            'host'       => $_ENV['DB_HOST'],
+            'driver'     => $_ENV['DB_CONNECTION'] ?? 'pdo_mysql',
+        ];
+        $conn = DriverManager::getConnection($connectionParams);
+        $schemaManager = $conn->createSchemaManager();
+        var_dump(
+            // array_map(
+            //     fn($table) => $table->getName(),
+            //     $schemaManager->listTableColumns('emails')
+            // )
+            array_keys($schemaManager->listTableColumns('emails'))
+        );
+        // $builder = $conn->createQueryBuilder();
+        // $emails = 
+        // $emails = $builder->select('*')->from('emails')->fetchAllAssociative();
+        // var_dump($emails);
+        // $stmt = $conn->prepare('SELECT * FROM emails');
+        // $result = $stmt->executeQuery();
+        // var_dump($result->fetchAllAssociative());
+        // // $router->get('/',[HomeController::class, 'index']);
+        // $router->get('/about',[HomeController::class, 'about']);
+        // $router->get('/form',[HomeController::class, 'form']);
+        // $router->post('/upload',[HomeController::class, 'upload']);
+        // $router->get('/invoice',[HomeController::class, 'invoice']);
+        // $router->get('/generator',[GaneratorController::class, 'index']);
+        // $router->get('/test', function () {
+        //     $payment = new Payment();
+        //     $payment->updateStatus(PaymentStatus::Failed);
+        //     // echo $payment->getStatus()->value;
+        //     $address = new Address('123 Main St', 'Anytown', 'CA', '12345', 'US');
+        //     echo $address->street;
+        // });

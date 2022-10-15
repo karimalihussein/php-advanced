@@ -37,7 +37,7 @@ class Email extends Model
        return $stmt->fetchAll(PDO::FETCH_OBJ);
    }
 
-   public function markEmailSent(int $id): void
+   public function updateEmailStatus(int $id): void
    {
        $stmt = $this->db->prepare(
            'UPDATE emails
