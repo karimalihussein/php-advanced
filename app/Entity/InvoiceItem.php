@@ -18,14 +18,12 @@ use Doctrine\ORM\Mapping\OneToMany;
 use Doctrine\ORM\Mapping\Table;
 
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="invoice_items")
- */
-class InvoiceItems
+#[Entity]
+#[Table('invoice_items')]
+class InvoiceItem
 {
     #[Id]
-    #[Column(type: GeneratedValue::class)]
+    #[Column, GeneratedValue]
     private int $id;
     #[Column(name: 'invoice_id')]
     private int $invoiceId;
@@ -51,19 +49,12 @@ class InvoiceItems
         return $this->invoiceId;
     }
 
-    public function setInvoiceId(int $invoiceId): self
-    {
-        $this->invoiceId = $invoiceId;
-
-        return $this;
-    }
-
     public function getDescription(): string
     {
         return $this->description;
     }
 
-    public function setDescription(string $description): self
+    public function setDescription(string $description): InvoiceItem
     {
         $this->description = $description;
 
@@ -75,7 +66,7 @@ class InvoiceItems
         return $this->quantity;
     }
 
-    public function setQuantity(int $quantity): self
+    public function setQuantity(int $quantity): InvoiceItem
     {
         $this->quantity = $quantity;
 
@@ -87,7 +78,7 @@ class InvoiceItems
         return $this->unitPrice;
     }
 
-    public function setUnitPrice(float $unitPrice): self
+    public function setUnitPrice(float $unitPrice): InvoiceItem
     {
         $this->unitPrice = $unitPrice;
 
@@ -99,7 +90,7 @@ class InvoiceItems
         return $this->invoice;
     }
 
-    public function setInvoice(Invoice $invoice): self
+    public function setInvoice(Invoice $invoice): InvoiceItem
     {
         $this->invoice = $invoice;
 

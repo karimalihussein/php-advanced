@@ -17,10 +17,8 @@ use Doctrine\ORM\Mapping\OneToMany;
 use Doctrine\ORM\Mapping\Table;
 
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="invoices")
- */
+#[Entity]
+#[Table('invoices')]
 class Invoice
 {
     #[Id]
@@ -39,7 +37,7 @@ class Invoice
 
     #[Column(name: 'created_at', type: Types::DATETIME_MUTABLE)]
     private \DateTime $createdAt;
-    #[OneToMany(targetEntity: InvoiceItems::class, mappedBy: "invoice")]
+    #[OneToMany(targetEntity: InvoiceItem::class, mappedBy: 'invoice', cascade: ['persist', 'remove'])]
     private Collection $items; 
 
     public function __construct()
@@ -106,9 +104,10 @@ class Invoice
         return $this->items;
     }
 
-    public function addItem(InvoiceItems $item): self
+    public function addItem(InvoiceItem $item): Invoice
     {
         $item->setInvoice($this);
+
         $this->items->add($item);
 
         return $this;

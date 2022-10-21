@@ -9,7 +9,7 @@ use App\Controllers\GaneratorController;
 use App\Controllers\HomeController;
 use App\Controllers\UserController;
 use App\Entity\Invoice;
-use App\Entity\InvoiceItems;
+use App\Entity\InvoiceItem;
 use App\Enums\InvoiceStatus;
 use App\Enums\PaymentStatus;
 use App\Models\Address;
@@ -73,7 +73,7 @@ $invoice = (new Invoice())
 ->setCreatedAt(new DateTime());
 
 foreach ($items as [$description, $quantity, $price]) {
-    $item = (new InvoiceItems())
+    $item = (new InvoiceItem())
         ->setDescription($description)
         ->setQuantity($quantity)
         ->setUnitPrice($price);
@@ -83,6 +83,7 @@ foreach ($items as [$description, $quantity, $price]) {
 
 
 $entitymanager->persist($invoice);
+$entitymanager->flush();
 
 
 
