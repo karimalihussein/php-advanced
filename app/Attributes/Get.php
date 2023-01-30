@@ -12,6 +12,6 @@ class Get extends Route
 {
     public function __construct(public string $routePath) 
     {
-        parent::__construct($routePath, HttpMethod::GET);
+        parent::__construct($routePath, HttpMethod::Get);
     }
 }

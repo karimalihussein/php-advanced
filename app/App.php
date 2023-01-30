@@ -9,22 +9,28 @@ use App\Interfaces\PaymentGatewayServiceInterface;
 use App\Services\InvoiceService;
 use App\Services\PaddlePaymentService;
 use App\Services\PaymentGatewayService;
+use Illuminate\Events\Dispatcher;
+use Illuminate\Database\Capsule\Manager as Capsule;
 use Symfony\Component\Mailer\MailerInterface;
 
 class App
 {
-    private static DB $db;
     private Config $config;
 
     public function __construct(protected Container $container,protected ?Router $router = null, protected array $request = [])
     {
-       
-
+    
     }
-
-    public static function db(): DB
+    public function initDb(array $config)
     {
-        return static::$db;
+        $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
+        $dotenv->load();
+
+        $capsule = new Capsule();
+        $capsule->addConnection($config);
+        $capsule->setEventDispatcher(new Dispatcher());
+        $capsule->setAsGlobal();
+        $capsule->bootEloquent();
     }
 
     public function boot() : static
@@ -32,7 +38,7 @@ class App
         $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
         $dotenv->load();
         $this->config = new Config($_ENV);
-        static::$db = new DB($this->config->db ?? []);
+        $this->initDb($this->config->db);
         $this->container->set(PaymentGatewayServiceInterface::class, PaddlePaymentService::class);
         $this->container->set(MailerInterface::class, fn() => new CustomMailer($this->config->mailer['dns']));
         return $this;

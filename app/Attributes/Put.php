@@ -12,6 +12,6 @@ class Put extends Route
 {
     public function __construct(public string $routePath) 
     {
-        parent::__construct($routePath, HttpMethod::PUT);
+        parent::__construct($routePath, HttpMethod::Put);
     }
 }

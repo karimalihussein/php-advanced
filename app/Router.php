@@ -13,9 +13,7 @@ class Router
 
     public function __construct(private Container $container)
     {
-        
     }
-
 
     public function registerRoutesFromControllerAttributes(array $controllers)
     {
@@ -81,5 +79,4 @@ class Router
 
         throw new RouteNotFoundException();
     }
-    
 }

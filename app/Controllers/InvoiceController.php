@@ -12,7 +12,5 @@ class InvoiceController
     {
         $name = $_GET['name'];
         $amount = $_GET['amount'];
-
-
     }
 }

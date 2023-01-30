@@ -471,3 +471,60 @@ $statement->execute($data);
         //     $address = new Address('123 Main St', 'Anytown', 'CA', '12345', 'US');
         //     echo $address->street;
         // });
+
+
+        $items = [
+            ['Item 1', 1 , 15],
+            ['Item 2', 2, 6.66],
+            ['Item 3', 3, 20.40],
+            ['Item 4', 4, 10]
+        ];
+        
+        $invoice = (new Invoice())
+        ->setInvoiceNumber('INV-123')
+        ->setAmount(100)
+        ->setStatus(InvoiceStatus::Pending)
+        ->setCreatedAt(new DateTime());
+        
+        foreach ($items as [$description, $quantity, $price]) {
+            $item = (new InvoiceItem())
+                ->setDescription($description)
+                ->setQuantity($quantity)
+                ->setUnitPrice($price);
+            $invoice->addItem($item);
+            $entitymanager->persist($item);
+        }
+        
+        
+        $entitymanager->persist($invoice);
+        $entitymanager->flush();
+
+
+        $entitymanager = 
+EntityManager::create($connectionParams,
+ Setup::createAttributeMetadataConfiguration([APP_PATH . 'Entity'], true));
+
+
+ $queryBuilder = $entitymanager->createQueryBuilder();
+
+$queryBuilder->select('i.createdAt', 'i.amount')->from(Invoice::class, 'i')
+    ->where('i.status = :status')
+    ->andWhere('i.paymentStatus = :paymentStatus')
+    ->setParameter('status', InvoiceStatus::Paid)
+    ->setParameter('paymentStatus', PaymentStatus::Paid)
+    ->orderBy('i.createdAt', 'DESC')
+    ->setMaxResults(10);
+
+$invoices = $queryBuilder->getQuery()->getResult();
+
+
+var_dump($invoices);
+
+
+# create a new table in the database
+$tool = new \Doctrine\ORM\Tools\SchemaTool($entitymanager);
+$classes = [
+    $entitymanager->getClassMetadata(Invoice::class),
+    $entitymanager->getClassMetadata(InvoiceItem::class),
+];
+$tool->createSchema($classes);

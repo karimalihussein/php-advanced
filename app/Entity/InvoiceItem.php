@@ -4,19 +4,13 @@ declare(strict_types = 1);
 
 namespace App\Entity;
 
-use App\Enums\InvoiceStatus;
-use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\GeneratedValue;
 use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\ManyToOne;
-use Doctrine\ORM\Mapping\OneToMany;
 use Doctrine\ORM\Mapping\Table;
-
 
 #[Entity]
 #[Table('invoice_items')]
@@ -25,18 +19,20 @@ class InvoiceItem
     #[Id]
     #[Column, GeneratedValue]
     private int $id;
+
     #[Column(name: 'invoice_id')]
     private int $invoiceId;
+
     #[Column]
     private string $description;
-    
+
     #[Column]
     private int $quantity;
 
-    #[Column(name: 'unit_pirce',type: Types::DECIMAL, precision: 10, scale: 2)]
+    #[Column(name: 'unit_price', type: Types::DECIMAL, precision: 10, scale: 2)]
     private float $unitPrice;
-    // #[ManyToOne(targetEntity: Invoice::class)]
-    #[ManyToOne(inversedBy: "items")]
+
+    #[ManyToOne(inversedBy: 'items')]
     private Invoice $invoice;
 
     public function getId(): int
@@ -96,6 +92,4 @@ class InvoiceItem
 
         return $this;
     }
-
-
 }

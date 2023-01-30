@@ -4,6 +4,7 @@ namespace App\Models;
 use PDO;
 use App\Enums\EmailStatus;
 use Symfony\Component\Mime\Address;
+use Illuminate\Database\Eloquent\Model;
 
 class Email extends Model
 {

@@ -5,7 +5,6 @@ declare(strict_types = 1);
 namespace App\Entity;
 
 use App\Enums\InvoiceStatus;
-use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
@@ -16,16 +15,14 @@ use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\OneToMany;
 use Doctrine\ORM\Mapping\Table;
 
-
 #[Entity]
 #[Table('invoices')]
 class Invoice
 {
     #[Id]
-    #[Column(type: GeneratedValue::class)]
-    #[GeneratedValue(strategy: "IDENTITY")]
+    #[Column, GeneratedValue]
     private int $id;
-    
+
     #[Column(type: Types::DECIMAL, precision: 10, scale: 2)]
     private float $amount;
 
@@ -35,10 +32,11 @@ class Invoice
     #[Column]
     private InvoiceStatus $status;
 
-    #[Column(name: 'created_at', type: Types::DATETIME_MUTABLE)]
+    #[Column(name: 'created_at')]
     private \DateTime $createdAt;
+
     #[OneToMany(targetEntity: InvoiceItem::class, mappedBy: 'invoice', cascade: ['persist', 'remove'])]
-    private Collection $items; 
+    private Collection $items;
 
     public function __construct()
     {
@@ -55,20 +53,19 @@ class Invoice
         return $this->amount;
     }
 
-    public function setAmount(float $amount): self
+    public function setAmount(float $amount): Invoice
     {
         $this->amount = $amount;
 
         return $this;
     }
 
-
     public function getInvoiceNumber(): string
     {
         return $this->invoiceNumber;
     }
 
-    public function setInvoiceNumber(string $invoiceNumber): self
+    public function setInvoiceNumber(string $invoiceNumber): Invoice
     {
         $this->invoiceNumber = $invoiceNumber;
 
@@ -80,7 +77,7 @@ class Invoice
         return $this->status;
     }
 
-    public function setStatus(InvoiceStatus $status): self
+    public function setStatus(InvoiceStatus $status): Invoice
     {
         $this->status = $status;
 
@@ -92,13 +89,16 @@ class Invoice
         return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTime $createdAt): self
+    public function setCreatedAt(\DateTime $createdAt): Invoice
     {
         $this->createdAt = $createdAt;
 
         return $this;
     }
 
+    /**
+     * @return Collection<InvoiceItem>
+     */
     public function getItems(): Collection
     {
         return $this->items;
@@ -112,8 +112,4 @@ class Invoice
 
         return $this;
     }
-
-
-
-
 }
