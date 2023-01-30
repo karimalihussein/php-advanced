@@ -19,6 +19,7 @@ use App\View;
 use Doctrine\DBAL\DriverManager;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\Setup;
+use Illuminate\Container\Container;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -36,7 +37,7 @@ define('STORAGE_PATH', $root . 'storage' . DIRECTORY_SEPARATOR);
 require APP_PATH . 'App.php';
 require APP_PATH . 'Helper.php';
 
-$container = new Container();
+$container = new ContainerContainer();
 $router    = new Router($container);
 
 $router->get('/', [HomeController::class, 'index']);

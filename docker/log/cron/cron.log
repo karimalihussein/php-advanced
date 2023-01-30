@@ -26010,3 +26010,151 @@ Stack trace:
 #7 /var/www/app/Scripts/Email.php(15): App\Container->get('App\\Services\\Em...')
 #8 {main}
   thrown in /var/www/app/Container.php on line 82
+
+Warning: include(/var/www/vendor/composer/../../app/Models/Email.php): Failed to open stream: No such file or directory in /var/www/vendor/composer/ClassLoader.php on line 571
+
+Warning: include(): Failed opening '/var/www/vendor/composer/../../app/Models/Email.php' for inclusion (include_path='.:/usr/local/lib/php') in /var/www/vendor/composer/ClassLoader.php on line 571
+
+Fatal error: Uncaught ReflectionException: Class "App\Models\Email" does not exist in /var/www/app/Container.php:40
+Stack trace:
+#0 /var/www/app/Container.php(40): ReflectionClass->__construct('App\\Models\\Emai...')
+#1 /var/www/app/Container.php(24): App\Container->resolve('App\\Models\\Emai...')
+#2 /var/www/app/Container.php(79): App\Container->get('App\\Models\\Emai...')
+#3 [internal function]: App\Container->App\{closure}(Object(ReflectionParameter))
+#4 /var/www/app/Container.php(62): array_map(Object(Closure), Array)
+#5 /var/www/app/Container.php(24): App\Container->resolve('App\\Services\\Em...')
+#6 /var/www/app/Scripts/Email.php(15): App\Container->get('App\\Services\\Em...')
+#7 {main}
+  thrown in /var/www/app/Container.php on line 40
+
+Warning: include(/var/www/vendor/composer/../../app/Services/EmailService.php): Failed to open stream: No such file or directory in /var/www/vendor/composer/ClassLoader.php on line 571
+
+Warning: include(): Failed opening '/var/www/vendor/composer/../../app/Services/EmailService.php' for inclusion (include_path='.:/usr/local/lib/php') in /var/www/vendor/composer/ClassLoader.php on line 571
+
+Fatal error: Uncaught ReflectionException: Class "App\Services\EmailService" does not exist in /var/www/app/Container.php:40
+Stack trace:
+#0 /var/www/app/Container.php(40): ReflectionClass->__construct('App\\Services\\Em...')
+#1 /var/www/app/Container.php(24): App\Container->resolve('App\\Services\\Em...')
+#2 /var/www/app/Scripts/Email.php(15): App\Container->get('App\\Services\\Em...')
+#3 {main}
+  thrown in /var/www/app/Container.php on line 40
+
+Warning: include(/var/www/vendor/composer/../../app/Services/EmailService.php): Failed to open stream: No such file or directory in /var/www/vendor/composer/ClassLoader.php on line 571
+
+Warning: include(): Failed opening '/var/www/vendor/composer/../../app/Services/EmailService.php' for inclusion (include_path='.:/usr/local/lib/php') in /var/www/vendor/composer/ClassLoader.php on line 571
+
+Fatal error: Uncaught ReflectionException: Class "App\Services\EmailService" does not exist in /var/www/app/Container.php:40
+Stack trace:
+#0 /var/www/app/Container.php(40): ReflectionClass->__construct('App\\Services\\Em...')
+#1 /var/www/app/Container.php(24): App\Container->resolve('App\\Services\\Em...')
+#2 /var/www/app/Scripts/Email.php(15): App\Container->get('App\\Services\\Em...')
+#3 {main}
+  thrown in /var/www/app/Container.php on line 40
+
+Warning: include(/var/www/vendor/composer/../../app/Services/EmailService.php): Failed to open stream: No such file or directory in /var/www/vendor/composer/ClassLoader.php on line 571
+
+Warning: include(): Failed opening '/var/www/vendor/composer/../../app/Services/EmailService.php' for inclusion (include_path='.:/usr/local/lib/php') in /var/www/vendor/composer/ClassLoader.php on line 571
+
+Fatal error: Uncaught ReflectionException: Class "App\Services\EmailService" does not exist in /var/www/app/Container.php:40
+Stack trace:
+#0 /var/www/app/Container.php(40): ReflectionClass->__construct('App\\Services\\Em...')
+#1 /var/www/app/Container.php(24): App\Container->resolve('App\\Services\\Em...')
+#2 /var/www/app/Scripts/Email.php(15): App\Container->get('App\\Services\\Em...')
+#3 {main}
+  thrown in /var/www/app/Container.php on line 40
+
+Warning: include(/var/www/vendor/composer/../../app/Services/EmailService.php): Failed to open stream: No such file or directory in /var/www/vendor/composer/ClassLoader.php on line 571
+
+Warning: include(): Failed opening '/var/www/vendor/composer/../../app/Services/EmailService.php' for inclusion (include_path='.:/usr/local/lib/php') in /var/www/vendor/composer/ClassLoader.php on line 571
+
+Fatal error: Uncaught ReflectionException: Class "App\Services\EmailService" does not exist in /var/www/app/Container.php:40
+Stack trace:
+#0 /var/www/app/Container.php(40): ReflectionClass->__construct('App\\Services\\Em...')
+#1 /var/www/app/Container.php(24): App\Container->resolve('App\\Services\\Em...')
+#2 /var/www/app/Scripts/Email.php(15): App\Container->get('App\\Services\\Em...')
+#3 {main}
+  thrown in /var/www/app/Container.php on line 40
+
+Warning: include(/var/www/vendor/composer/../../app/Services/EmailService.php): Failed to open stream: No such file or directory in /var/www/vendor/composer/ClassLoader.php on line 571
+
+Warning: include(): Failed opening '/var/www/vendor/composer/../../app/Services/EmailService.php' for inclusion (include_path='.:/usr/local/lib/php') in /var/www/vendor/composer/ClassLoader.php on line 571
+
+Fatal error: Uncaught ReflectionException: Class "App\Services\EmailService" does not exist in /var/www/app/Container.php:40
+Stack trace:
+#0 /var/www/app/Container.php(40): ReflectionClass->__construct('App\\Services\\Em...')
+#1 /var/www/app/Container.php(24): App\Container->resolve('App\\Services\\Em...')
+#2 /var/www/app/Scripts/Email.php(15): App\Container->get('App\\Services\\Em...')
+#3 {main}
+  thrown in /var/www/app/Container.php on line 40
+
+Warning: include(/var/www/vendor/composer/../../app/Services/EmailService.php): Failed to open stream: No such file or directory in /var/www/vendor/composer/ClassLoader.php on line 571
+
+Warning: include(): Failed opening '/var/www/vendor/composer/../../app/Services/EmailService.php' for inclusion (include_path='.:/usr/local/lib/php') in /var/www/vendor/composer/ClassLoader.php on line 571
+
+Fatal error: Uncaught ReflectionException: Class "App\Services\EmailService" does not exist in /var/www/app/Container.php:40
+Stack trace:
+#0 /var/www/app/Container.php(40): ReflectionClass->__construct('App\\Services\\Em...')
+#1 /var/www/app/Container.php(24): App\Container->resolve('App\\Services\\Em...')
+#2 /var/www/app/Scripts/Email.php(15): App\Container->get('App\\Services\\Em...')
+#3 {main}
+  thrown in /var/www/app/Container.php on line 40
+
+Warning: include(/var/www/vendor/composer/../../app/Services/EmailService.php): Failed to open stream: No such file or directory in /var/www/vendor/composer/ClassLoader.php on line 571
+
+Warning: include(): Failed opening '/var/www/vendor/composer/../../app/Services/EmailService.php' for inclusion (include_path='.:/usr/local/lib/php') in /var/www/vendor/composer/ClassLoader.php on line 571
+
+Fatal error: Uncaught ReflectionException: Class "App\Services\EmailService" does not exist in /var/www/app/Container.php:40
+Stack trace:
+#0 /var/www/app/Container.php(40): ReflectionClass->__construct('App\\Services\\Em...')
+#1 /var/www/app/Container.php(24): App\Container->resolve('App\\Services\\Em...')
+#2 /var/www/app/Scripts/Email.php(15): App\Container->get('App\\Services\\Em...')
+#3 {main}
+  thrown in /var/www/app/Container.php on line 40
+
+Warning: include(/var/www/vendor/composer/../../app/Services/EmailService.php): Failed to open stream: No such file or directory in /var/www/vendor/composer/ClassLoader.php on line 571
+
+Warning: include(): Failed opening '/var/www/vendor/composer/../../app/Services/EmailService.php' for inclusion (include_path='.:/usr/local/lib/php') in /var/www/vendor/composer/ClassLoader.php on line 571
+
+Fatal error: Uncaught ReflectionException: Class "App\Services\EmailService" does not exist in /var/www/app/Container.php:40
+Stack trace:
+#0 /var/www/app/Container.php(40): ReflectionClass->__construct('App\\Services\\Em...')
+#1 /var/www/app/Container.php(24): App\Container->resolve('App\\Services\\Em...')
+#2 /var/www/app/Scripts/Email.php(15): App\Container->get('App\\Services\\Em...')
+#3 {main}
+  thrown in /var/www/app/Container.php on line 40
+
+Warning: include(/var/www/vendor/composer/../../app/Services/EmailService.php): Failed to open stream: No such file or directory in /var/www/vendor/composer/ClassLoader.php on line 571
+
+Warning: include(): Failed opening '/var/www/vendor/composer/../../app/Services/EmailService.php' for inclusion (include_path='.:/usr/local/lib/php') in /var/www/vendor/composer/ClassLoader.php on line 571
+
+Fatal error: Uncaught ReflectionException: Class "App\Services\EmailService" does not exist in /var/www/app/Container.php:40
+Stack trace:
+#0 /var/www/app/Container.php(40): ReflectionClass->__construct('App\\Services\\Em...')
+#1 /var/www/app/Container.php(24): App\Container->resolve('App\\Services\\Em...')
+#2 /var/www/app/Scripts/Email.php(15): App\Container->get('App\\Services\\Em...')
+#3 {main}
+  thrown in /var/www/app/Container.php on line 40
+
+Warning: include(/var/www/vendor/composer/../../app/Services/EmailService.php): Failed to open stream: No such file or directory in /var/www/vendor/composer/ClassLoader.php on line 571
+
+Warning: include(): Failed opening '/var/www/vendor/composer/../../app/Services/EmailService.php' for inclusion (include_path='.:/usr/local/lib/php') in /var/www/vendor/composer/ClassLoader.php on line 571
+
+Fatal error: Uncaught ReflectionException: Class "App\Services\EmailService" does not exist in /var/www/app/Container.php:40
+Stack trace:
+#0 /var/www/app/Container.php(40): ReflectionClass->__construct('App\\Services\\Em...')
+#1 /var/www/app/Container.php(24): App\Container->resolve('App\\Services\\Em...')
+#2 /var/www/app/Scripts/Email.php(15): App\Container->get('App\\Services\\Em...')
+#3 {main}
+  thrown in /var/www/app/Container.php on line 40
+
+Warning: include(/var/www/vendor/composer/../../app/Services/EmailService.php): Failed to open stream: No such file or directory in /var/www/vendor/composer/ClassLoader.php on line 571
+
+Warning: include(): Failed opening '/var/www/vendor/composer/../../app/Services/EmailService.php' for inclusion (include_path='.:/usr/local/lib/php') in /var/www/vendor/composer/ClassLoader.php on line 571
+
+Fatal error: Uncaught ReflectionException: Class "App\Services\EmailService" does not exist in /var/www/app/Container.php:40
+Stack trace:
+#0 /var/www/app/Container.php(40): ReflectionClass->__construct('App\\Services\\Em...')
+#1 /var/www/app/Container.php(24): App\Container->resolve('App\\Services\\Em...')
+#2 /var/www/app/Scripts/Email.php(15): App\Container->get('App\\Services\\Em...')
+#3 {main}
+  thrown in /var/www/app/Container.php on line 40
