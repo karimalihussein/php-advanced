@@ -27,7 +27,7 @@ class Invoice extends Model
     protected $casts = [
         'created_at' => 'datetime',
         'due_date'   => 'datetime',
-        'status'     => InvoiceStatus::class,
+        // 'status'     => InvoiceStatus::class,
     ];
 
     protected static function booted()

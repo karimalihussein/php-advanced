@@ -27,8 +27,11 @@ class Config
 
             ],
             'mailer' => [
-                    'dns'      => $_ENV['MAIL_DRIVER'] . '://' . $_ENV['MAIL_HOST'] . ':' . $_ENV['MAIL_PORT']
-            ]
+                    'dns'      => $_ENV['MAIL_DRIVER'] . '://' . $_ENV['MAIL_HOST'] . ':' . $_ENV['MAIL_PORT'] 
+            ],
+            'apiKeys' => [
+                'emailable' => $_ENV['EMAILABLE_API_KEY'] ?? null,
+            ],
            
         ];
     }

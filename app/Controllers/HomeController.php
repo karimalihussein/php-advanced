@@ -10,9 +10,11 @@ use App\Attributes\Put;
 use App\Attributes\Route;
 use App\Enums\HttpMethod;
 use App\View;
+use Symfony\Component\Mailer\MailerInterface;
 
 class HomeController
 {
+
     #[Get('/')]
     #[Route('/home', HttpMethod::Head)]
     public function index(): View

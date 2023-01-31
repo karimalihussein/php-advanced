@@ -4,11 +4,15 @@ declare(strict_types = 1);
 
 namespace App;
 
+use App\Contracts\EmailValidationInterface;
 use App\Exceptions\RouteNotFoundException;
 use App\Interfaces\PaymentGatewayServiceInterface;
+use App\Services\Emailable\EmailValidationService;
 use App\Services\InvoiceService;
 use App\Services\PaddlePaymentService;
 use App\Services\PaymentGatewayService;
+use Dotenv\Dotenv;
+use Illuminate\Container\Container;
 use Illuminate\Events\Dispatcher;
 use Illuminate\Database\Capsule\Manager as Capsule;
 use Symfony\Component\Mailer\MailerInterface;
@@ -25,7 +29,6 @@ class App
     {
         $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
         $dotenv->load();
-
         $capsule = new Capsule();
         $capsule->addConnection($config);
         $capsule->setEventDispatcher(new Dispatcher());
@@ -35,12 +38,13 @@ class App
 
     public function boot() : static
     {
-        $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
+        $dotenv = Dotenv::createImmutable(dirname(__DIR__));
         $dotenv->load();
         $this->config = new Config($_ENV);
         $this->initDb($this->config->db);
-        $this->container->set(PaymentGatewayServiceInterface::class, PaddlePaymentService::class);
-        $this->container->set(MailerInterface::class, fn() => new CustomMailer($this->config->mailer['dns']));
+        $this->container->bind(MailerInterface::class, fn() => new CustomMailer($this->config->mailer['dns']));
+        $this->container->bind(EmailValidationInterface::class, fn() => new EmailValidationService($this->config->apiKeys['emailable']));
+
         return $this;
     }
 
